@@ -23,29 +23,33 @@ form.addEventListener('submit', (e) => {
   const isBirthdayToday = today.month() === birthDate.month() && today.date() === birthDate.date();
   
   if (isBirthdayToday) {
-    alert("Wszystkiego najlepszego! 🎂🎉"); [cite, 15]
+    alert("Wszystkiego najlepszego!");
   }
 
-  let htmlContent = `<p>Od Twoich narodzin minęło już <strong>${daysSinceBirth}</strong> dni.</p>`; [cite, 13, 14]
+  let htmlContent = `<p>Od twoich narodzin minęło <strong>${daysSinceBirth}</strong> dni.</p>`;
 
   if (!isBirthdayToday) {
+
     let nextBirthday = birthDate.year(today.year());
     if (nextBirthday.isBefore(today) || nextBirthday.isSame(today)) {
       nextBirthday = nextBirthday.add(1, 'year');
     }
 
-    const weeksToBirthday = nextBirthday.diff(today, 'weeks'); [cite, 24]
+    const weeksToBirthday = nextBirthday.diff(today, 'weeks');
 
     if (weeksToBirthday === 0) {
-      htmlContent += `<p class="font-bold underline">Masz urodziny w tym tygodniu!</p>`; [cite, 25]
+
+      htmlContent += `<p class="font-bold underline">Masz urodziny w tym tygodniu!</p>`;
     } else {
-      htmlContent += `<p>Do Twoich kolejnych urodzin pozostało <strong>${weeksToBirthday}</strong> tygodni.</p>`; [cite, 24]
+      htmlContent += `<p>Do twoich nastęnych urodzin zostało <strong>${weeksToBirthday}</strong> tygodni.</p>`;
     }
   }
+
 
   dialogContent.innerHTML = htmlContent;
   dialog.showModal();
 });
+
 
 closeDialogBtn.addEventListener('click', () => {
   dialog.close();
